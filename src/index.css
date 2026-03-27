@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ITI Monitoring Dashboard - Government Professional Theme */
+/* Inspired by official AP Government portals */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Government Blue Theme */
+    --background: 210 20% 98%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    /* Deep Government Blue */
+    --primary: 210 65% 22%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light Blue-Gray */
+    --secondary: 210 25% 93%;
+    --secondary-foreground: 210 65% 22%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Saffron Accent - Indian National Color */
+    --accent: 28 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success Green */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Info Blue */
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 210 65% 22%;
+
+    --radius: 0.5rem;
+
+    /* Government Header Gradient */
+    --header-gradient: linear-gradient(135deg, hsl(210 65% 22%) 0%, hsl(210 55% 32%) 100%);
+
+    /* Saffron Highlight Gradient */
+    --accent-gradient: linear-gradient(135deg, hsl(28 90% 55%) 0%, hsl(35 95% 60%) 100%);
+
+    /* Card Shadow */
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-elevated: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 210 65% 22%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 28 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 55% 32%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 210 50% 35%;
+    --sidebar-ring: 28 90% 55%;
+
+    /* KPI Card Variants */
+    --kpi-attendance: 142 71% 45%;
+    --kpi-engagement: 199 89% 48%;
+    --kpi-violations: 0 84% 60%;
+    --kpi-feedback: 28 90% 55%;
+  }
+
+  .dark {
+    --background: 215 28% 10%;
+    --foreground: 210 20% 95%;
+
+    --card: 215 25% 14%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 215 25% 14%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 28 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 20% 20%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 215 20% 20%;
+    --muted-foreground: 215 16% 60%;
+
+    --accent: 210 55% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 80% 45%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 199 70% 45%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 215 20% 25%;
+    --input: 215 20% 25%;
+    --ring: 28 90% 55%;
+
+    --sidebar-background: 215 28% 8%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 28 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 18%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 215 20% 20%;
+    --sidebar-ring: 28 90% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Source Sans 3', 'Noto Sans Telugu', sans-serif;
+  }
+
+  /* Telugu text styling */
+  .telugu {
+    font-family: 'Noto Sans Telugu', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+
+  /* Government Header Style */
+  .gov-header {
+    background: var(--header-gradient);
+    @apply text-white shadow-lg;
+  }
+
+  /* Saffron accent bar */
+  .accent-bar {
+    background: var(--accent-gradient);
+    @apply h-1;
+  }
+
+  /* KPI Card Styles */
+  .kpi-card {
+    @apply relative overflow-hidden rounded-lg bg-card p-6 shadow-sm border transition-all duration-200 hover:shadow-md;
+  }
+
+  .kpi-card::before {
+    content: '';
+    @apply absolute left-0 top-0 h-full w-1;
+  }
+
+  .kpi-card.attendance::before {
+    background-color: hsl(var(--kpi-attendance));
+  }
+
+  .kpi-card.engagement::before {
+    background-color: hsl(var(--kpi-engagement));
+  }
+
+  .kpi-card.violations::before {
+    background-color: hsl(var(--kpi-violations));
+  }
+
+  .kpi-card.feedback::before {
+    background-color: hsl(var(--kpi-feedback));
+  }
+
+  /* Data Table Styles */
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply bg-primary text-primary-foreground px-4 py-3 text-left text-sm font-semibold uppercase tracking-wider;
+  }
+
+  .data-table td {
+    @apply px-4 py-3 text-sm border-b border-border;
+  }
+
+  .data-table tr:hover td {
+    @apply bg-muted/50;
+  }
+
+  /* Status Badges */
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .status-badge.present {
+    @apply bg-success/10 text-success;
+  }
+
+  .status-badge.absent {
+    @apply bg-destructive/10 text-destructive;
+  }
+
+  .status-badge.late {
+    @apply bg-warning/10 text-warning;
+  }
+
+  /* Alert Severity */
+  .alert-severity {
+    @apply inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-semibold;
+  }
+
+  .alert-severity.high {
+    @apply bg-destructive/15 text-destructive;
+  }
+
+  .alert-severity.medium {
+    @apply bg-warning/15 text-warning;
+  }
+
+  .alert-severity.low {
+    @apply bg-info/15 text-info;
+  }
+
+  /* Government Seal/Logo Container */
+  .gov-seal {
+    @apply flex items-center gap-3;
+  }
+
+  .gov-seal-icon {
+    @apply w-12 h-12 rounded-full bg-white/10 flex items-center justify-center;
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  /* Stagger children animation */
+  .stagger-children>* {
+    @apply animate-fade-in;
+  }
+
+  .stagger-children>*:nth-child(1) {
+    animation-delay: 0ms;
+  }
+
+  .stagger-children>*:nth-child(2) {
+    animation-delay: 50ms;
+  }
+
+  .stagger-children>*:nth-child(3) {
+    animation-delay: 100ms;
+  }
+
+  .stagger-children>*:nth-child(4) {
+    animation-delay: 150ms;
+  }
+
+  .stagger-children>*:nth-child(5) {
+    animation-delay: 200ms;
+  }
+
+  .stagger-children>*:nth-child(6) {
+    animation-delay: 250ms;
+  }
+
+  /* Pulse animation for live indicators */
+  @keyframes pulse-dot {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .animate-scan {
+    animation: scanline 2s linear infinite;
+  }
+}
